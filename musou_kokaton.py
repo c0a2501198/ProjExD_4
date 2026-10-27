@@ -100,24 +100,23 @@ class Bird(pg.sprite.Sprite):
         if not (sum_mv[0] == 0 and sum_mv[1] == 0):
             self.dire = tuple(sum_mv)
             self.image = self.imgs[self.dire]
-        screen.blit(self.image, self.rect)
         if  self.state == "hyper":
             self.hyper_life -= 1
             if self.hyper_life <= 0:
                 self.state = "normal"
                 self.hyper_life = 0
         if self.state == "hyper":
-            image = pg.transform.laplacian(self.image)
+            self.image = pg.transform.laplacian(self.image)
         else:
             image = self.image
 
-        screen.blit(image, self.rect)
+        screen.blit(self.image, self.rect)
 
     def hyper(self, score: "Score"):
-        if score.value >= 100 and self.state == "normal":
+        if score.value >= 10 and self.state == "normal":
             self.state = "hyper"
             self.hyper_life = 500
-            score.value -= 100
+            score.value -= 10
 
 
 class Bomb(pg.sprite.Sprite):
