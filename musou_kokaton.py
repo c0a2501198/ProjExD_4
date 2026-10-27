@@ -113,7 +113,7 @@ class Bird(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def hyper(self, score: "Score"):
-        if score.value >= 100 and self.state == "normal":
+        if score.value > 100 and self.state == "normal":
             self.state = "hyper"
             self.hyper_life = 500
             score.value -= 100
@@ -393,7 +393,7 @@ def main():
                 else:
                     beams.add(Beam(bird))
             if event.type == pg.KEYDOWN and event.key == pg.K_RETURN:
-                if score.value >= 200:
+                if score.value > 200:
                     grav.add(Gravity(400))
                     score.value -= 200
             
@@ -435,18 +435,20 @@ def main():
             exps.add(Explosion(bomb, 50))
 
         for bomb in pg.sprite.spritecollide(bird, bombs, True):  # こうかとんと衝突した爆弾リスト
-            if bomb.state == "active":
+            if bird.state == "hyper":
+                exps.add(Explosion(bomb, 50))
+                score.value += 1
+            elif bomb.state == "active" :
                 bird.change_img(8, screen)  # こうかとん悲しみエフェクト
                 life.num -= 1
+            
+                        
                 if life.num == 0:
                     score.update(screen)
                     pg.display.update()
                     time.sleep(2)
-                    return
+                    return  
     
-            if bird.state == "hyper":
-                exps.add(Explosion(bomb, 50))
-                score.value += 1
             
 
         bird.update(key_lst, screen)
