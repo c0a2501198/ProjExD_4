@@ -398,7 +398,7 @@ def main():
                     score.value -= 200
             
 
-            if event.type == pg.KEYDOWN and event.key == pg.K_LSHIFT:
+            if event.type == pg.KEYDOWN and event.key == pg.K_RSHIFT:
                 bird.hyper(score)
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_s and score.value > 50 and len(shields) == 0:
