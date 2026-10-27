@@ -113,10 +113,10 @@ class Bird(pg.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def hyper(self, score: "Score"):
-        if score.value >= 10 and self.state == "normal":
+        if score.value >= 100 and self.state == "normal":
             self.state = "hyper"
             self.hyper_life = 500
-            score.value -= 10
+            score.value -= 100
 
 
 class Bomb(pg.sprite.Sprite):
