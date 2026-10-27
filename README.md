@@ -1,2 +1,2 @@
 slackの招待コード：
-https://d-5cs5514.slack.com/archives/C0CC7D0HUHZ
+https://join.slack.com/t/d-5cs5514/shared_invite/zt-4eiclphw2-mal3ezm4B5v~MlRrxhtFgg
